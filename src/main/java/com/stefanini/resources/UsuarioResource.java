@@ -35,7 +35,7 @@ public class UsuarioResource {
 
     @PUT
     public Response update(@Valid UsuarioCompletoDto usuario) throws UsuarioLoginJaExisteException,UsuarioIdNaoExisteException{
-        return Response.status(Status.CREATED).entity(usuarioService.update(usuario)).build();
+        return Response.status(Status.OK).entity(usuarioService.update(usuario)).build();
     }
 
     @GET

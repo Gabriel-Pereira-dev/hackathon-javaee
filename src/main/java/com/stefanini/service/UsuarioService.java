@@ -33,14 +33,13 @@ public class UsuarioService {
                                 .collect(Collectors.toList());
     }
 
-    public UsuarioCompletoDto findById(Long id) {
+    public UsuarioDto findById(Long id) {
         Usuario usuario = usuarioRepository.findById(id);
         if(!Objects.nonNull(usuario)){
             throw new UsuarioIdNaoExisteException("O id informado não existe!");
         }
-        UsuarioCompletoDto usuarioCompletoDto = new UsuarioCompletoDto(usuario);
-        usuarioCompletoDto.setSenha(Base64Util.decode(usuarioCompletoDto.getSenha()));
-        return usuarioCompletoDto;
+
+        return new UsuarioDto(usuario);
     }
 
     public UsuarioDto save(UsuarioCompletoDto usuarioCompletoDto) throws UsuarioLoginJaExisteException{
